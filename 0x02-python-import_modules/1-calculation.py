@@ -8,7 +8,7 @@ if __name__ == "__main__":
     multiplication_result = mul(a, b)
     division_result = div(a, b)
 
-    print(f"{a} + {b} = {addition_result}")
-    print(f"{a} - {b} = {subtraction_result}")
-    print(f"{a} * {b} = {multiplication_result}")
-    print(f"{a} / {b} = {division_result}")
+    print("{0} + {1} = {2}".format(a, b, add(a, b)))
+    print("{0} - {1} = {2}".format(a, b, sub(a, b)))
+    print("{0} * {1} = {2}".format(a, b, mul(a, b)))
+    print("{0} / {1} = {2}".format(a, b, div(a, b)))
