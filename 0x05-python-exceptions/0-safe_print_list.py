@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 def safe_print_list(my_list=[], x=0):
-     """
+    """
     Print x elements of a list.
 
     Args:
@@ -9,8 +9,9 @@ def safe_print_list(my_list=[], x=0):
         x (int): The number of elements of my_list to print.
 
     Returns:
-        The number of elements printed. - val
+        The number of elements printed. - count
     """
+
     count = 0
     try:
         for i in range(x):
@@ -19,5 +20,5 @@ def safe_print_list(my_list=[], x=0):
     except IndexError:
         pass
     finally:
-        print()
+        print('')
         return count
