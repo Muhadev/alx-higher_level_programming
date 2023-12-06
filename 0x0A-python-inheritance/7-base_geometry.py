@@ -1,17 +1,17 @@
 #!/usr/bin/python3
 """
- a function that returns True if the object
- is exactly an instance of the specified class
-  otherwise False.
+Contains the class BaseGeometry
 """
 
 
 class BaseGeometry:
-    """empty class"""
+    """A class with public instance methods area and integer_validator"""
     def area(self):
+        """raises an exception when called"""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
+        """validates that value is an integer greater than 0"""
         if type(value) is not int:
             raise TypeError("{:s} must be an integer".format(name))
         if value <= 0:
