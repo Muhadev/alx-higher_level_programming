@@ -22,4 +22,3 @@ class Student:
             if hasattr(self, attr):
                 serializable_dict[attr] = getattr(self, attr)
         return serializable_dict
-
