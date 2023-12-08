@@ -6,6 +6,7 @@ function that reads a text file
 
 
 def pascal_triangle(n):
+    """Pascal’s triangle of n:"""
     if n <= 0:
         return []
 
