@@ -4,6 +4,7 @@ function that reads a text file
 (UTF8) and prints it to stdout
 """
 
+
 def class_to_json(obj):
     """Get all attributes of the object"""
     attributes = vars(obj)
