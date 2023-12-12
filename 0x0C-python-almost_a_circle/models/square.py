@@ -11,6 +11,15 @@ class Square(Rectangle):
         """Class constructor:"""
         super().__init__(size, size, x, y, id)
 
+    def to_dictionary(self):
+        """Class constructor:"""
+        return {
+                'id': self.id,
+                'size': self.size,
+                'x': self.x,
+                'y': self.y
+                }
+
     @property
     def size(self):
         """The setter """
