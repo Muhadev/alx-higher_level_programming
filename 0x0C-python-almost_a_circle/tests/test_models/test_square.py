@@ -38,6 +38,33 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(square.width, 8)
         self.assertEqual(square.height, 8)
 
+    def test_square_update_with_args(self):
+        """Create a square"""
+        square = Square(5, 2, 3, 10)
+        square.update(25, 8, 4, 5)
+        self.assertEqual(square.id, 25)
+        self.assertEqual(square.size, 8)
+        self.assertEqual(square.x, 4)
+        self.assertEqual(square.y, 5)
+
+    def test_square_update_with_kwargs(self):
+        """Create a square"""
+        square = Square(5, 2, 3, 10)
+        square.update(id=30, y=7)
+        self.assertEqual(square.id, 30)
+        self.assertEqual(square.size, 5)
+        self.assertEqual(square.x, 2)
+        self.assertEqual(square.y, 7)
+
+    def test_square_update_mixed_args_kwargs(self):
+        """Create a square"""
+        square = Square(5, 2, 3, 10)
+        square.update(25, 8, 2, 7)
+        self.assertEqual(square.id, 25)
+        self.assertEqual(square.size, 8)
+        self.assertEqual(square.x, 2)
+        self.assertEqual(square.y, 7)
+
 
 if __name__ == '__main__':
     unittest.main()
