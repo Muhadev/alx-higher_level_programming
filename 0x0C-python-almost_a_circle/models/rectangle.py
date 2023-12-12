@@ -69,8 +69,10 @@ class Rectangle(Base):
 
     def display(self):
         """instance with the character #"""
+        for _ in range(self.y):
+            print()
         for _ in range(self.height):
-            print("#" * self.width)
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """y overriding the __str__ method"""

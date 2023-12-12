@@ -73,6 +73,28 @@ class TestRectangle(unittest.TestCase):
         expected_str = "[Rectangle] (1) 5/5 - 10/20"
         self.assertEqual(str(rect), expected_str)
 
+    def test_display_with_x_and_y(self):
+        """Create a rectangle with specific x, y positions"""
+        rect = Rectangle(5, 4, 2, 1)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        sys.stdout = sys.__stdout__
+        result = captured_output.getvalue()
+        expected_output = "\n  #####\n  #####\n  #####\n  #####\n"
+        self.assertEqual(result, expected_output)
+
+    def test_display_without_x_and_y(self):
+        """Create a rectangle with default x, y positions (0, 0)"""
+        rect = Rectangle(3, 2)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        sys.stdout = sys.__stdout__
+        result = captured_output.getvalue()
+        expected_output = "###\n###\n"
+        self.assertEqual(result, expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()
