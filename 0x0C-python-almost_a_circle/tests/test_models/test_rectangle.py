@@ -125,6 +125,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect.x, 1)
         self.assertEqual(rect.y, 7)
 
+    def test_rectangle_to_dictionary(self):
+        """Create a rectangle with initial attributes"""
+        r1 = Rectangle(10, 2, 1, 9, 1)
+        r1_dict = r1.to_dictionary()
+        expected_dict = {'id': 1, 'width': 10, 'height': 2, 'x': 1, 'y': 9}
+        self.assertDictEqual(r1_dict, expected_dict)
+
 
 if __name__ == '__main__':
     unittest.main()
