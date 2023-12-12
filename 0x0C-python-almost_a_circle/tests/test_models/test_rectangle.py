@@ -118,7 +118,7 @@ class TestRectangle(unittest.TestCase):
     def test_update_method_with_mixed_args_and_kwargs(self):
         """Create a rectangle with initial attributes"""
         rect = Rectangle(5, 10, 1, 2, 10)
-        rect.update(25, width=6, y=7)
+        rect.update(25, 6, 10, 1, 7)
         self.assertEqual(rect.id, 25)
         self.assertEqual(rect.width, 6)
         self.assertEqual(rect.height, 10)

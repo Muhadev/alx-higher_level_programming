@@ -80,9 +80,14 @@ class Rectangle(Base):
             attrs = ['id', 'width', 'height', 'x', 'y']
             for idx, arg in enumerate(args):
                 setattr(self, attrs[idx], arg)
+            if len(args) > 4:
+                setattr(self, 'y', args[4])
         else:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if hasattr(self, key):
+                    setattr(self, key, value)
+                elif key == 'y':
+                    setattr(self, 'y', value)
 
     def __str__(self):
         """y overriding the __str__ method"""
