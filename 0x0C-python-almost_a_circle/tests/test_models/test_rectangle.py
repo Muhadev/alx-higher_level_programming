@@ -5,6 +5,8 @@ and be PEP 8 validated.
 """
 import unittest
 from models.rectangle import Rectangle
+from io import StringIO
+import sys
 
 
 class TestRectangle(unittest.TestCase):
@@ -54,6 +56,16 @@ class TestRectangle(unittest.TestCase):
         """Test the area() method functionality"""
         rect = Rectangle(10, 20)
         self.assertEqual(rect.area(), 200)
+
+    def test_display_method(self):
+        """Test the display() method functionality"""
+        rect = Rectangle(3, 2)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        sys.stdout = sys.__stdout__
+        expected_output = "###\n###\n"
+        self.assertEqual(captured_output.getvalue(), expected_output)
 
 
 if __name__ == '__main__':
