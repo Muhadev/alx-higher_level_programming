@@ -88,6 +88,7 @@ class Rectangle(Base):
             self.y = args[4]
 
     def update(self, *args, **kwargs):
+        """y overriding the __str__ method"""
         if args:
             attrs = ['id', 'width', 'height', 'x', 'y']
             for idx, arg in enumerate(args):
