@@ -4,7 +4,7 @@ classes and methods must be unit tested
 and be PEP 8 validated.
 """
 import unittest
-from models.base import Base
+from models.rectangle import Rectangle
 
 
 class TestRectangle(unittest.TestCase):
