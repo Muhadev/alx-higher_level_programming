@@ -30,6 +30,26 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect.x, 5)
         self.assertEqual(rect.y, 10)
 
+    def test_attribute_setters_invalid_values(self):
+        """Test attribute setters with invalid values"""
+        rect = Rectangle(10, 20)
+        with self.assertRaises(TypeError):
+            rect.width = "Invalid"
+        with self.assertRaises(ValueError):
+            rect.width = 0
+        with self.assertRaises(TypeError):
+            rect.height = "Invalid"
+        with self.assertRaises(ValueError):
+            rect.height = -5
+        with self.assertRaises(TypeError):
+            rect.x = "Invalid"
+        with self.assertRaises(ValueError):
+            rect.x = -3
+        with self.assertRaises(TypeError):
+            rect.y = "Invalid"
+        with self.assertRaises(ValueError):
+            rect.y = -4
+
 
 if __name__ == '__main__':
     unittest.main()
