@@ -95,6 +95,36 @@ class TestRectangle(unittest.TestCase):
         expected_output = "###\n###\n"
         self.assertEqual(result, expected_output)
 
+    def test_update_method(self):
+        """Create a rectangle with initial attributes"""
+        rect = Rectangle(5, 10, 1, 2, 10)
+        rect.update(20, 7, 15, 3, 4)
+        self.assertEqual(rect.id, 20)
+        self.assertEqual(rect.width, 7)
+        self.assertEqual(rect.height, 15)
+        self.assertEqual(rect.x, 3)
+        self.assertEqual(rect.y, 4)
+
+    def test_update_method_with_kwargs(self):
+        """Create a rectangle with initial attributes"""
+        rect = Rectangle(5, 10, 1, 2, 10)
+        rect.update(id=30, width=8, height=16, x=4, y=5)
+        self.assertEqual(rect.id, 30)
+        self.assertEqual(rect.width, 8)
+        self.assertEqual(rect.height, 16)
+        self.assertEqual(rect.x, 4)
+        self.assertEqual(rect.y, 5)
+
+    def test_update_method_with_mixed_args_and_kwargs(self):
+        """Create a rectangle with initial attributes"""
+        rect = Rectangle(5, 10, 1, 2, 10)
+        rect.update(25, width=6, y=7)
+        self.assertEqual(rect.id, 25)
+        self.assertEqual(rect.width, 6)
+        self.assertEqual(rect.height, 10)
+        self.assertEqual(rect.x, 1)
+        self.assertEqual(rect.y, 7)
+
 
 if __name__ == '__main__':
     unittest.main()

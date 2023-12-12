@@ -74,6 +74,15 @@ class Rectangle(Base):
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
 
+    def update(self, *args, **kwargs):
+        if args:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for idx, arg in enumerate(args):
+                setattr(self, attrs[idx], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
     def __str__(self):
         """y overriding the __str__ method"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
