@@ -75,6 +75,7 @@ class Rectangle(Base):
             print(" " * self.x + "#" * self.width)
 
     def update(self, *args):
+        """y overriding the __str__ method"""
         if len(args) > 0:
             self.id = args[0]
         if len(args) > 1:
