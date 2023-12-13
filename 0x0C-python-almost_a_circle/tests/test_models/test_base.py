@@ -33,6 +33,30 @@ class TestBase(unittest.TestCase):
         self.assertNotEqual(base_instance2.id, base_instance3.id)
         self.assertNotEqual(base_instance1.id, base_instance3.id)
 
+    def test_to_json_string_empty_list(self):
+        """Test if IDs are unique for multiple instances"""
+        empty_list = []
+        result = Base.to_json_string(empty_list)
+        self.assertEqual(result, "[]")
+
+    def test_to_json_string_none(self):
+        """Test if IDs are unique for multiple instances"""
+        result = Base.to_json_string(None)
+        self.assertEqual(result, "[]")
+
+    def test_to_json_string_list_of_dicts(self):
+        """Test if IDs are unique for multiple instances"""
+        list_dicts = [
+                {'id': 1, 'name': 'Alice'},
+                {'id': 2, 'name': 'Bob'},
+                {'id': 3, 'name': 'Charlie'}
+                ]
+        expected_json = '[{"id": 1, "name": "Alice"},
+                          {"id": 2, "name": "Bob"},
+                          {"id": 3, "name": "Charlie"}]'
+        result = Base.to_json_string(list_dicts)
+        self.assertEqual(result, expected_json)
+
 
 if __name__ == '__main__':
     unittest.main()
