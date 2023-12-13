@@ -49,13 +49,10 @@ class TestBase(unittest.TestCase):
         list_dicts = [
                 {'id': 1, 'name': 'Alice'},
                 {'id': 2, 'name': 'Bob'},
-                {'id': 3, 'name': 'Charlie'}
                 ]
-        expected_json = '[{"id": 1, "name": "Alice"},
-                          {"id": 2, "name": "Bob"},
-                          {"id": 3, "name": "Charlie"}]'
+        expect_json = '[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]'
         result = Base.to_json_string(list_dicts)
-        self.assertEqual(result, expected_json)
+        self.assertEqual(result, expect_json)
 
 
 if __name__ == '__main__':
