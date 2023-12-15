@@ -11,6 +11,10 @@ class Square(Rectangle):
         """Class constructor:"""
         super().__init__(size, size, x, y, id)
 
+    def __eq__(self, other):
+        """Class constructor:"""
+        return isinstance(other, Square) and self.size == other.size
+
     def to_dictionary(self):
         """Class constructor:"""
         return {

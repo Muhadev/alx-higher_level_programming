@@ -77,6 +77,14 @@ class Rectangle(Base):
         """the area value of the Rectangle instance."""
         return self.width * self.height
 
+    def __eq__(self, other):
+        """instance with the character #"""
+        return (
+                isinstance(other, Rectangle) and
+                self.width == other.width and
+                self.height == other.height
+                )
+
     def display(self):
         """instance with the character #"""
         for _ in range(self.y):

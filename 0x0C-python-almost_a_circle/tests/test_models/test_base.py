@@ -86,6 +86,28 @@ class TestBase(unittest.TestCase):
         expected = [{'width': 5, 'height': 10}, {'width': 3, 'height': 7}]
         self.assertEqual(result, expected)
 
+    def test_create_rectangle(self):
+        """Test if IDs are unique for multiple instances"""
+        rect_dict = {'width': 5, 'height': 10}
+        rect_instance = Rectangle.create(**rect_dict)
+        expected_rect = Rectangle(5, 10)
+        self.assertEqual(rect_instance, expected_rect)
+
+    def test_create_square(self):
+        """Test if IDs are unique for multiple instances"""
+        square_dict = {'size': 7}
+        square_instance = Square.create(**square_dict)
+        expected_square = Square(7)
+        self.assertEqual(square_instance, expected_square)
+
+    def test_update_method(self):
+        """Test if IDs are unique for multiple instances"""
+        square_dict = {'size': 7}
+        square_instance = Square(1)
+        square_instance.update(**square_dict)
+        expected_square = Square(7)
+        self.assertEqual(square_instance, expected_square)
+
 
 if __name__ == '__main__':
     unittest.main()
