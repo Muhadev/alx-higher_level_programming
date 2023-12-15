@@ -14,10 +14,6 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-        if id is None:
-            self.id = id
-        else:
-            self.id = id
 
     def to_dictionary(self):
         """Class constructor: """
