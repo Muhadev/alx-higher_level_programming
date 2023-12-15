@@ -5,7 +5,9 @@ and be PEP 8 validated.
 """
 import unittest
 from models.base import Base
-
+import os
+from models.rectangle import Rectangle
+from models.square import Square
 
 class TestBase(unittest.TestCase):
     def setUp(self):
@@ -53,6 +55,18 @@ class TestBase(unittest.TestCase):
         expect_json = '[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]'
         result = Base.to_json_string(list_dicts)
         self.assertEqual(result, expect_json)
+
+    def test_save_to_file(self):
+        """Test if IDs are unique for multiple instances"""
+        rect1 = Rectangle(4, 5)
+        rect2 = Rectangle(3, 7)
+        Rectangle.save_to_file([rect1, rect2])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        square = Square(6)
+        Square.save_to_file([square])
+        self.assertTrue(os.path.exists("Square.json"))
+        os.remove("Rectangle.json")
+        os.remove("Square.json")
 
 
 if __name__ == '__main__':
