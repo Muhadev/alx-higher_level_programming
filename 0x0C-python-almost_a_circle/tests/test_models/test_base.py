@@ -37,12 +37,12 @@ class TestBase(unittest.TestCase):
         """Test if IDs are unique for multiple instances"""
         empty_list = []
         result = Base.to_json_string(empty_list)
-        self.assertEqual(result, "[]")
+        self.assertEqual(result, [])
 
     def test_to_json_string_none(self):
         """Test if IDs are unique for multiple instances"""
         result = Base.to_json_string(None)
-        self.assertEqual(result, "[]")
+        self.assertEqual(result, [])
 
     def test_to_json_string_list_of_dicts(self):
         """Test if IDs are unique for multiple instances"""
