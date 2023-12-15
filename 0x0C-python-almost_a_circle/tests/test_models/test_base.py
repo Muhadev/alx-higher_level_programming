@@ -9,6 +9,7 @@ import os
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase(unittest.TestCase):
     def setUp(self):
         """Reset __nb_objects to 0 before each test"""
@@ -67,6 +68,23 @@ class TestBase(unittest.TestCase):
         self.assertTrue(os.path.exists("Square.json"))
         os.remove("Rectangle.json")
         os.remove("Square.json")
+
+    def test_from_json_string_empty(self):
+        """Test if IDs are unique for multiple instances"""
+        result = Base.from_json_string('')
+        self.assertEqual(result, [])
+
+    def test_from_json_string_none(self):
+        """Test if IDs are unique for multiple instances"""
+        result = Base.from_json_string(None)
+        self.assertEqual(result, [])
+
+    def test_from_json_string_valid(self):
+        """Test if IDs are unique for multiple instances"""
+        json_string = '[{"width": 5, "height": 10}, {"width": 3, "height": 7}]'
+        result = Base.from_json_string(json_string)
+        expected = [{'width': 5, 'height': 10}, {'width': 3, 'height': 7}]
+        self.assertEqual(result, expected)
 
 
 if __name__ == '__main__':
