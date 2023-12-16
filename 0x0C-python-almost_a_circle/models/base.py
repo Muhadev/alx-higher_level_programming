@@ -3,6 +3,7 @@
 Write the first class Base:
 """
 import json
+import os
 
 
 class Base:
@@ -67,3 +68,16 @@ class Base:
         """class constructor"""
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+    @classmethod
+    def load_from_file(cls):
+        """class constructor"""
+        filename = f"{cls.__name__}.json"
+        if not os.path.exists(filename):
+            return []
+        with open(filename, 'r') as file:
+            json_string = file.read()
+            list_dicts = cls.from_json_string(json_string)
+        instances = []
+        instances = [cls.create(**dictionary) for dictionary in list_dicts]
+        return instances

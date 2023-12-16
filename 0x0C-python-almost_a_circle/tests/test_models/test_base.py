@@ -108,6 +108,18 @@ class TestBase(unittest.TestCase):
         expected_square = Square(7)
         self.assertEqual(square_instance, expected_square)
 
+    def test_load_from_file_rectangle(self):
+        """Test if IDs are unique for multiple instances"""
+        instances = Rectangle.load_from_file()
+        expected_instances = [Rectangle(5, 10), Rectangle(3, 7)]
+        self.assertEqual(instances, expected_instances)
+
+    def test_load_from_file_square(self):
+        """Test if IDs are unique for multiple instances"""
+        instances = Square.load_from_file()
+        expected_instances = [Square(4), Square(6)]
+        self.assertEqual(instances, expected_instances)
+
 
 if __name__ == '__main__':
     unittest.main()
