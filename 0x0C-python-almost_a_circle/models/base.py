@@ -91,13 +91,16 @@ class Base:
             writer = csv.writer(file)
             if cls.__name__ == 'Rectangle':
                 for obj in list_objs:
-                    writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                    writer.writerow([obj.id,
+                                    obj.width, obj.height,
+                                    obj.x, obj.y])
             elif cls.__name__ == 'Square':
                 for obj in list_objs:
                     writer.writerow([obj.id, obj.size, obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
+        """instance with the character #"""
         filename = f"{cls.__name__}.csv"
         if not os.path.exists(filename):
             return []
