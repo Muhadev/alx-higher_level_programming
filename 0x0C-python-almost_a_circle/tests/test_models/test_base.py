@@ -15,7 +15,10 @@ class TestBase(unittest.TestCase):
         """Reset __nb_objects to 0 before each test"""
         Base._Base__nb_objects = 0
         with open("Rectangle.json", "w") as file:
-            file.write('[{"width": 5, "height": 10}, {"width": 3, "height": 7}]')
+            file.write('[{"width": 5, "height": 10}, '
+                       '{"width": 3, "height": 7}]')
+        if os.path.exists("Rectangle.csv"):
+            os.remove("Rectangle.csv")
 
     def test_id_assignment_with_id_argument(self):
         """Test if the ID is assigned when an ID is provided"""
@@ -115,6 +118,28 @@ class TestBase(unittest.TestCase):
         instances = Rectangle.load_from_file()
         expected_instances = [Rectangle(5, 10), Rectangle(3, 7)]
         self.assertEqual(instances, expected_instances)
+
+    def test_csv_save_load(self):
+        """Test if IDs are unique for multiple instances"""
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 0, 0, 2)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file_csv()
+        self.assertNotEqual(
+                len(list_rectangles_input),
+                len(list_rectangles_output)
+                )
+        for input_rect, output_rect in zip(
+                list_rectangles_input,
+                list_rectangles_output
+                ):
+            self.assertEqual(vars(input_rect), vars(output_rect))
+
+    def tearDown(self):
+        if os.path.exists("Rectangle.csv"):
+            os.remove("Rectangle.csv")
 
 
 if __name__ == '__main__':

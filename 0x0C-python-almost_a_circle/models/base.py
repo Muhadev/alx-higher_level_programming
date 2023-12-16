@@ -110,18 +110,18 @@ class Base:
             for row in reader:
                 if cls.__name__ == 'Rectangle':
                     instance = cls.create(
+                            id=int(row[0]),
                             width=int(row[1]),
                             height=int(row[2]),
                             x=int(row[3]),
-                            y=int(row[4]),
-                            id=int(row[0])
+                            y=int(row[4])
                             )
                 elif cls.__name__ == 'Square':
                     instance = cls.create(
+                            id=int(row[0]),
                             size=int(row[1]),
                             x=int(row[2]),
-                            y=int(row[3]),
-                            id=int(row[0])
+                            y=int(row[3])
                             )
                     instances.append(instance)
         return instances
