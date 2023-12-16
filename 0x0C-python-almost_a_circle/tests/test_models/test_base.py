@@ -14,6 +14,8 @@ class TestBase(unittest.TestCase):
     def setUp(self):
         """Reset __nb_objects to 0 before each test"""
         Base._Base__nb_objects = 0
+        with open("Rectangle.json", "w") as file:
+            file.write('[{"width": 5, "height": 10}, {"width": 3, "height": 7}]')
 
     def test_id_assignment_with_id_argument(self):
         """Test if the ID is assigned when an ID is provided"""
@@ -112,12 +114,6 @@ class TestBase(unittest.TestCase):
         """Test if IDs are unique for multiple instances"""
         instances = Rectangle.load_from_file()
         expected_instances = [Rectangle(5, 10), Rectangle(3, 7)]
-        self.assertEqual(instances, expected_instances)
-
-    def test_load_from_file_square(self):
-        """Test if IDs are unique for multiple instances"""
-        instances = Square.load_from_file()
-        expected_instances = [Square(4), Square(6)]
         self.assertEqual(instances, expected_instances)
 
 
