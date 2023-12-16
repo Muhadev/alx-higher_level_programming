@@ -3,7 +3,7 @@
 the class Rectangle that inherits from Base
 """
 from models.base import Base
-
+import csv
 
 class Rectangle(Base):
     """Class Rectangle inherits from Base"""
@@ -106,6 +106,47 @@ class Rectangle(Base):
                     setattr(self, key, value)
                 elif key == 'y':
                     setattr(self, 'y', value)
+    
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """y overriding the __str__ method"""
+        filename = f"{cls.__name__}.csv"
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+            if cls.__name__ == 'Rectangle':
+                for obj in list_objs:
+                    writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+            elif cls.__name__ == 'Square':
+                for obj in list_objs:
+                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = f"{cls.__name__}.csv"
+        if not os.path.exists(filename):
+            return []
+
+        instances = []
+        with open(filename, 'r') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if cls.__name__ == 'Rectangle':
+                    instance = cls.create(
+                            width=int(row[1]),
+                            height=int(row[2]),
+                            x=int(row[3]),
+                            y=int(row[4]),
+                            id=int(row[0])
+                            )
+                elif cls.__name__ == 'Square':
+                    instance = cls.create(
+                            size=int(row[1]),
+                            x=int(row[2]),
+                            y=int(row[3]),
+                            id=int(row[0])
+                            )
+                    instances.append(instance)
+        return instances
 
     def __str__(self):
         """y overriding the __str__ method"""
