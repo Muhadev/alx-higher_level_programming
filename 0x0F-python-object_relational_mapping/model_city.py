@@ -6,6 +6,7 @@ Module containing the City class definition
 from sqlalchemy import Column, Integer, String, ForeignKey
 from model_state import Base, State
 
+
 class City(Base):
     """City class that inherits from Base"""
     __tablename__ = 'cities'
