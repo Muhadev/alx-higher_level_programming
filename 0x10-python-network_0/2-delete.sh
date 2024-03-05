@@ -1,4 +1,3 @@
 #!/bin/bash
-
-# Check if the URL argument is provided
-curl -sX DELETE  "$1"
+# Send a DELETE  request to the URL passed and displays the body of the response
+curl -sX DELETE "$1"
