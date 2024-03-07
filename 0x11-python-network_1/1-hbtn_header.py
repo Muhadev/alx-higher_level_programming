@@ -1,25 +1,15 @@
 #!/usr/bin/python3
-
+"""script that takes in a URL, sends a request to
+the URL and displays the value of the X-Request-Id variable
+found in the header
+"""
 import urllib.request
 import sys
 
-if len(sys.argv) != 2:
-    print("Usage: python script.py <URL>")
-    sys.exit(1)
+if __name__ == "__main__":
+    url = sys.argv[1]
 
-url = sys.argv[1]
+    request = urllib.request.Request(url)
 
-try:
-    with urllib.request.urlopen(url) as response:
-        x_request_id = response.getheader('X-Request-Id')
-        if x_request_id:
-            print(x_request_id)
-        else:
-            print("X-Request-Id not found in the response header.")
-except urllib.error.HTTPError as e:
-    if e.headers.get('X-Request-Id'):
-        print(e.headers['X-Request-Id'])
-    else:
-        print("X-Request-Id not found in the response header.")
-except urllib.error.URLError as e:
-    print("Error fetching the URL:", e.reason)
+    with urllib.request.urlopen(request) as response:
+        print(dict(response.headers).get("X-Request-Id"))
