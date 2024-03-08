@@ -7,18 +7,17 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    q = sys.argv[1] if len(sys.argv) > 1 else ""
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
 
-    payload = {"q": q}
+    payload = {"q": letter}
     response = requests.post("http://0.0.0.0:5000/search_user", data=payload)
 
     try:
         json_data = response.json()
 
-        if isinstance(json_data, list) and len(json_data) > 0:
-            user = json_data[0]
-            print("[{}] {}".format(user.get('id'), user.get('name')))
-        else:
+        if json_data == {}:
             print("No result")
+        else:
+            print("[{}] {}".format(json_data.get("id"), json_data.get("name")))         
     except ValueError:
         print("Not a valid JSON")
