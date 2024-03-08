@@ -12,7 +12,8 @@ if __name__ == "__main__":
     value = {"email": sys.argv[2]}
 
     data = urllib.parse.urlencode(value).encode('utf-8')
-    request = urllib.request.Request(url, data)
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    request = urllib.request.Request(url, data, headers=headers, method='POST')
 
     with urllib.request.urlopen(request) as response:
         body = response.read().decode('utf-8')
