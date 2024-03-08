@@ -14,7 +14,6 @@ if __name__ == "__main__":
 
     response = requests.get(url)
 
-
     if response.status_code >= 400:
         print("Error code: {}".format(response.status_code))
     else:
